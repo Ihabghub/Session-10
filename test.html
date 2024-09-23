@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="startGame()">Start</button>
+    <div id="box"></div>
+    
+    <script>
+
+        function startGame(){
+            setInterval(createBox, 1000)
+        }
+        
+        function createBox(){
+            const newBox = document.createElement("div");
+            newBox.classList.add("box");
+            document.getElementById("box").appendChild(newBox);
+            setInterval(createBox , 1000)
+        }
+
+    </script>
+
+    <style>
+
+        #box{
+            width: 50px;
+            height: 50px;
+            border: 1px solid  black;
+            margin-top: 10px;
+        }
+
+        button{
+            padding: 10px;
+        }
+
+    </style>
+
+
+</body>
+</html>
