@@ -5,37 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <button type="button" onclick="startGame()">Start</button>
-    <div id="box"></div>
+<body id="body">
+
+    <button onclick="startGame()">Start</button>
     
     <script>
 
+        const Interval = 1000;
+
         function startGame(){
-            setInterval(createBox, 1000)
+            let row = document.createElement("div");
+            row.id = "row";
+            document.getElementById("body").appendChild(row);
+            setInterval(addBox, Interval);
         }
         
-        function createBox(){
-            const newBox = document.createElement("div");
+        function addBox(){
+            let row = document.getElementById("row");
+            let newBox = document.createElement("div");
             newBox.classList.add("box");
-            document.getElementById("box").appendChild(newBox);
-            setInterval(createBox , 1000)
+            //newBox.classList.add(getRandomColor());
+            newBox.style.backgroundColor = getRandomColor();
+            random.onclick = boxClickedHandler;
+            row.appendChild(newBox);
+        }
+
+        function getRandomColor(){
+            let allColors = ["red" , "green" , "blue"];
+            let randomIndex = Math.floor(Math.random() * allColors.length);
+            let randomColor = allColors[randomIndex];
+            return randomColor;
         }
 
     </script>
 
     <style>
 
-        #box{
-            width: 50px;
-            height: 50px;
+        .box{
+            width: 100px;
+            height: 100px;
             border: 1px solid  black;
             margin-top: 10px;
+        }
+
+        #row{
+            display:flex ;
         }
 
         button{
             padding: 10px;
         }
+
+        /* .red{
+            background-color: red;
+        }
+
+        .green{
+            background-color: green;
+        }
+
+        .blue{
+            background-color: blue;
+        } */
 
     </style>
 
